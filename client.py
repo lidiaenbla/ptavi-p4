@@ -10,7 +10,7 @@ import sys
 try:
     SERVER = sys.argv[1]
     PORT = int(sys.argv[2])
-    LINELISTA = sys.argv[3:] #cogemos todo el texto
+    LINELISTA = sys.argv[3:]
 except IndexError:
     sys.exit("")
 

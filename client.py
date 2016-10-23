@@ -14,10 +14,9 @@ try:
     DIR = sys.argv[4]
 except IndexError:
     sys.exit("python3 client.py ip puerto register luke@polismassa.com")
-#python3 client.py ip puerto register luke@polismassa.com
 if REGISTER == "register":
     if DIR.split('@'):
-        SIP = "sip:" + DIR + " SIP/2.0\r\n"
+        SIP = "sip: " + DIR + " SIP/2.0\r\n"
         LINE = "REGISTER " + SIP
 
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as my_socket:

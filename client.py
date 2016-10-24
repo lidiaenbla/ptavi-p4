@@ -12,12 +12,14 @@ try:
     PORT = int(sys.argv[2])
     REGISTER = sys.argv[3]
     DIR = sys.argv[4]
+    EXPIRES = sys.argv[5]
 except IndexError:
-    sys.exit("python3 client.py ip puerto register luke@polismassa.com")
+    sys.exit("Usage: client.py ip puerto register sip_address expires_value")
 if REGISTER == "register":
     if DIR.split('@'):
-        SIP = "sip: " + DIR + " SIP/2.0\r\n"
-        LINE = "REGISTER " + SIP
+        SIP = "sip:" + DIR + " SIP/2.0\r\n"
+        print(EXPIRES)
+        LINE = "REGISTER " + SIP + "Expires: " + EXPIRES + "\r\n"
 
 with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as my_socket:
     my_socket.connect((SERVER, PORT))

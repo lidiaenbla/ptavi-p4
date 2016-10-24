@@ -12,11 +12,13 @@ import sys
 dicc_cliente = {}
 clientes = []
 
+
 class SIPRegisterHandler(socketserver.DatagramRequestHandler):
     """
     Echo server class
     """
     dicc_cliente = {}
+
     def register2json(self):
         """
         Actualizar fichero json con los datos del dicc

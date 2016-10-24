@@ -6,6 +6,7 @@ Clase (y programa principal) para un servidor de eco en UDP simple
 
 import socketserver
 import time
+import json
 
 dicc_cliente = {}
 clientes = []
@@ -15,6 +16,10 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
     Echo server class
     """
     dicc_cliente = {}
+    def register2json(self):
+        fichJson = open('registered.json', 'w')
+        json.dump(self.dicc_cliente, fichJson)
+
     def comprobarExpires(self):
         deleteList = []
         horaActual = time.gmtime(time.time())
@@ -31,6 +36,7 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
         """
         self.comprobarExpires()
         self.dicc_cliente[sip[4:]] = [ip, expires]
+        self.register2json()
         print(self.dicc_cliente)
 
     def handle(self):

@@ -30,7 +30,9 @@ class SIPRegisterHandler(socketserver.DatagramRequestHandler):
         """
         try:
             open('registered.json', 'r')
+            print("existe el fichero")
         except:
+            print("NO existe el fichero")
             pass
 
     def comprobarExpires(self):
